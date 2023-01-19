@@ -447,6 +447,13 @@ input[type='tel']:invalid {
   background: #fff7f7;
   border: 1px solid #ff0000;
 }
+input[type='text'].error,
+input[type='number'].error,
+input[type='email'].error,
+input[type='tel'].error {
+  background: #fff7f7;
+  border: 1px solid #ff0000;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -646,6 +653,62 @@ input::-webkit-inner-spin-button {
 .form-radio-option input:checked ~ label::before {
   border: 1px solid var(--button-color);
 }
+
+.form-checkbox-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+.form-checkbox-input > label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 155%;
+  color: var(--text-color);
+}
+.form-checkbox-option {
+  display: flex;
+  margin-top: 4px;
+}
+.form-checkbox-option input {
+  appearance: none;
+}
+.form-checkbox-option label {
+  position: relative;
+  display: block;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 155%;
+  color: var(--text-color);
+  padding-left: 26px;
+  cursor: pointer;
+}
+.form-checkbox-option label::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  border: 1px solid #909090;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+.form-checkbox-option input:checked ~ label::after {
+  content: url(../img/check-icon.svg);
+  position: absolute;
+  top: -1px;
+  left: -4px;
+}
+.form-checkbox-option input:checked ~ label::before {
+  border: 1px solid var(--button-color);
+}
+
 .json-result .main-column p {
   margin-top: 20px;
 }
@@ -686,7 +749,20 @@ input::-webkit-inner-spin-button {
 .add-api-image {
   flex: 0 0 50%;
 }
-
+@media (max-width: 1200px) {
+  .header-menu-list {
+    margin-left: 40px;
+    display: flex;
+  }
+  .header-menu-item:not(:first-child) {
+    margin-left: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  .header-menu-item {
+    max-width: 120px;
+  }
+}
 @media (max-width: 992px) {
   .header .container {
     justify-content: space-between;
@@ -769,6 +845,9 @@ input::-webkit-inner-spin-button {
   .header-menu-item:hover .header-submenu-wrapper {
     display: block;
     max-height: 100%;
+  }
+  .header-menu-item {
+    max-width: none;
   }
 }
 @media (max-width: 768px) {
