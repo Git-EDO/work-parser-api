@@ -109,10 +109,7 @@ body.lock {
   position: absolute;
   z-index: 2;
   border-radius: 50%;
-  background: conic-gradient(
-    #1900af 0,
-    rgba(25, 0, 175, 0) calc(var(--p) * 1%)
-  );
+  background: conic-gradient(#1900af 0, rgba(25, 0, 175, 0) 100%);
   -webkit-mask: radial-gradient(
     farthest-side,
     #0000 calc(99% - 25px),
@@ -123,16 +120,11 @@ body.lock {
     #0000 calc(99% - 25px),
     #000 calc(100% - 25px)
   );
-  animation: p 2s infinite;
+  animation: rotate 2s infinite;
 }
-@property --p {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 0;
-}
-@keyframes p {
+@keyframes rotate {
   to {
-    --p: 100;
+    transform: rotate(360deg);
   }
 }
 .top-decor-image {
@@ -362,6 +354,7 @@ body.lock {
   font-weight: 600;
 }
 .mail-link {
+  position: relative;
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 600;
@@ -370,16 +363,17 @@ body.lock {
   color: var(--button-color);
   text-decoration: none;
   white-space: nowrap;
-  position: relative;
   padding-left: 25px;
 }
-.mail-link img {
+.mail-link::before {
+  content: url('../img/mail-icon.svg');
   position: absolute;
-  top: 6px;
-  left: 0;
+  top: -1px;
+  left: -30px;
 }
-.add-api-row .mail-link img {
-  top: 8px;
+.add-api-row .mail-link::before {
+  top: 1px;
+  left: 0px;
 }
 .form-section {
   width: 50%;
